@@ -21,9 +21,12 @@ web3.defaultChain = 'bsc'; // set chain which support blob transactions
 
 ### Methods
 
-#### sendTransaction
+#### sendBundle
+
 ```typescript
 // add account to sign transaction
+import {transactionBuilder} from "web3-eth";
+
 const acc = web3.eth.accounts.privateKeyToAccount(String(process.env.PRIVATE_KEY));
 web3.eth.accounts.wallet.add(acc);
 
@@ -35,7 +38,7 @@ const bundleData = {
 		"0x....",
 		"0x....",
 		"0x....",
-    ],
+	],
 	maxBlockNumber: 40519017,
 };
 

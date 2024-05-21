@@ -1,14 +1,16 @@
-import { Web3, core } from "web3";
+import { Web3, core, HexString } from "web3";
 import { SendBundleArg, Web3BundlePlugin } from "../src";
+import * as process from "process";
+import { Address, Transaction } from "web3-types";
 
-const endpointUrl =
-  "https://bsc-testnet.nodereal.io/v1/{{apikey}}";
+const endpointUrl = "https://bsc-testnet.nodereal.cc/v1/" + process.env.APIKEY;
 
 describe("Web3BundlePlugin Tests", () => {
   it("should register Web3BundlePlugin plugin on Web3Context instance", () => {
     const web3Context = new core.Web3Context(endpointUrl);
     web3Context.registerPlugin(new Web3BundlePlugin());
     expect(web3Context.bundle).toBeDefined();
+    console.log(process.env);
   });
 
   describe("Web3BundlePlugin method tests", () => {
@@ -50,10 +52,33 @@ describe("Web3BundlePlugin Tests", () => {
     });
 
     it("test bundle api eth_sendBundle", async () => {
+      const privateKey = web3.utils.hexToBytes(process.env.PrivateKey as HexString);
+      const address: Address = process.env.Address as Address;
+
+      const nonce = await web3.eth.getTransactionCount(address, "latest");
+
+      console.log(nonce);
+
+      let txs: string[] = [];
+
+      for (let i = 0; i < 3; i++) {
+        const tx: Transaction = {
+          from: address,
+          to: address,
+          value: web3.utils.toWei(0.0001, "ether"),
+          gas: 0x7530,
+          gasPrice: 0x12a05f200,
+          nonce: nonce + BigInt(i),
+        };
+        const signedTx = await web3.eth.accounts.signTransaction(
+          tx,
+          privateKey
+        );
+        txs.push(signedTx.rawTransaction);
+      }
+
       const bundle: SendBundleArg = {
-        txs: [
-          "0xf86b820e0785012a05f200827530948e15d16d6432166372fb1e6f4a41840d71edd41f8401c9c3808081e6a0afeadce597f61cbd55f0a0f14351497763246ebcc3d0ef387da4cd4b16e2cc5ca0760e03f1ad3c1b30ec9cba24c3cef0c01996c1152d224c0bd242b1a73d2b54a0",
-        ],
+        txs: txs,
         maxBlockNumber: 0,
       };
       const bundleHash = await web3.bundle.sendBundle(
