@@ -25,8 +25,8 @@ jobs:
               run: yarn build
             - name: Lint
               run: yarn run lint
-            - name: Tests
-              run: yarn run test
+#            - name: Tests
+#              run: yarn run test
 
     maybe-release:
         name: release

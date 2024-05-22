@@ -3,6 +3,7 @@ import { Web3, core, HexString } from "web3";
 import { Address, Transaction } from "web3-types";
 import { SendBundleArg, Web3BundlePlugin } from "../src";
 
+// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
 const endpointUrl = "https://bsc-testnet.nodereal.io/v1/" + process.env.APIKEY;
 
 describe("Web3BundlePlugin Tests", () => {

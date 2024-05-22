@@ -22,7 +22,8 @@
     "url": "git@github.com:web3/web3.js-plugin-bundle.git"
   },
   "dependencies": {
-    "web3-core": "^4.3.2"
+    "web3-core": "^4.3.2",
+    "web3-types": "^1.6.0"
   },
   "devDependencies": {
     "@chainsafe/eslint-config": "^2.0.0",
