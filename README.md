@@ -25,7 +25,6 @@ npm i web3-plugin-bundle
 import {Web3BundlePlugin} from 'web3-plugin-bundle';
 web3 = new Web3(/* provider here */);
 web3.registerPlugin(new Web3BundlePlugin());
-web3.defaultChain = 'bsc'; // set chain which support blob transactions
 ```
 
 ### Methods
