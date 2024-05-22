@@ -50,7 +50,7 @@ describe("Web3BundlePlugin Tests", () => {
           value: web3.utils.toWei(0.0001, "ether"),
           gas: 0x17530,
           gasPrice: 0x12a05f200,
-          nonce: nonce + BigInt(i),
+          nonce: nonce + BigInt(i + 1),
         };
         const signedTx = await web3.eth.accounts
           .signTransaction(tx, privateKey)

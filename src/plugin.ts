@@ -1,7 +1,15 @@
 import { Web3PluginBase, Web3RequestManager } from "web3-core";
 import { QueryBundle, SendBundleArg } from "./types";
 
-export class Web3BundlePlugin extends Web3PluginBase {
+type BundleRpcApi = {
+  eth_sendBundle: (parameter1: SendBundleArg) => string;
+  eth_queryBundle: (parameter1: string) => QueryBundle;
+  eth_bundlePrice: () => bigint;
+  eth_validators: () => string[];
+  eth_builders: () => string[];
+};
+
+export class Web3BundlePlugin extends Web3PluginBase<BundleRpcApi> {
   public pluginNamespace = "bundle";
 
   public async sendBundle(

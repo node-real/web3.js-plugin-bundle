@@ -18,7 +18,10 @@
 		"strict": true,
 		"strictNullChecks": true,
 		"outDir": "lib",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"paths": {
+			"web3": ["node_modules/web3/index.d.ts"]
+		}
 	},
 	"include": ["src", "test"],
 	"exclude": ["node_modules"]
