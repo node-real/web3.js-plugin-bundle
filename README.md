@@ -76,34 +76,34 @@ const bundle: SendBundleArg = {
 
 // send bundle
 const bundleHash = await web3.bundle
-.sendBundle(web3.requestManager, bundle)
+.sendBundle(bundle)
 .catch((reason: any) => {
 	console.error(reason);
 });
 
 // query bundle by bundleHash
 const bundleObj = await web3.bundle
-.queryBundle(web3.requestManager, bundleHash)
+.queryBundle(bundleHash)
 .catch((reason: any) => {
 	console.error(reason);
 });
 
 // query bundlePrice
 const bundlePrice = await web3.bundle
-.bundlePrice(web3.requestManager)
+.bundlePrice()
 .catch((reason: any) => {
 	console.error(reason);
 });
 
 // query builders
 const builders = await web3.bundle
-.builders(web3.requestManager)
+.builders()
 .catch((reason: any) => {
 	console.error(reason);
 });
 
 const validators = await web3.bundle
-.builders(web3.requestManager)
+.validators()
 .catch((reason: any) => {
 	console.error(reason);
 });

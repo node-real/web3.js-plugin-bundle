@@ -50,7 +50,7 @@ describe("Web3BundlePlugin Tests", () => {
           value: web3.utils.toWei(0.0001, "ether"),
           gas: 0x17530,
           gasPrice: 0x12a05f200,
-          nonce: nonce + BigInt(i + 1),
+          nonce: nonce + BigInt(i),
         };
         const signedTx = await web3.eth.accounts
           .signTransaction(tx, privateKey)
@@ -68,7 +68,7 @@ describe("Web3BundlePlugin Tests", () => {
 
       console.info("bundle arg: ", bundle);
       const bundleHash_ = await web3.bundle
-        .sendBundle(web3.requestManager, bundle)
+        .sendBundle(bundle)
         .catch((reason: any) => {
           console.error(reason);
           fail();
@@ -79,7 +79,7 @@ describe("Web3BundlePlugin Tests", () => {
 
     it("test bundle api eth_queryBundle", async () => {
       const bundle = await web3.bundle
-        .queryBundle(web3.requestManager, bundleHash)
+        .queryBundle(bundleHash)
         .catch((reason: any) => {
           console.error(reason);
           fail();
@@ -89,7 +89,7 @@ describe("Web3BundlePlugin Tests", () => {
 
     it("test bundle api eth_bundlePrice", async () => {
       const bundlePrice = await web3.bundle
-        .bundlePrice(web3.requestManager)
+        .bundlePrice()
         .catch((reason: any) => {
           console.error(reason);
           fail();
@@ -98,22 +98,18 @@ describe("Web3BundlePlugin Tests", () => {
     });
 
     it("test bundle api eth_builders", async () => {
-      const builders = await web3.bundle
-        .builders(web3.requestManager)
-        .catch((reason: any) => {
-          console.error(reason);
-          fail();
-        });
+      const builders = await web3.bundle.builders().catch((reason: any) => {
+        console.error(reason);
+        fail();
+      });
       console.info("builders: ", builders);
     });
 
     it("test bundle api eth_validators", async () => {
-      const validators = await web3.bundle
-        .builders(web3.requestManager)
-        .catch((reason: any) => {
-          console.error(reason);
-          fail();
-        });
+      const validators = await web3.bundle.validators().catch((reason: any) => {
+        console.error(reason);
+        fail();
+      });
       console.info("validators: ", validators);
     });
   });
