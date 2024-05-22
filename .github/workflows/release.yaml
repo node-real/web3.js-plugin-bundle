@@ -5,6 +5,7 @@ on:
       - main
       - alpha
       - beta
+      - dev
 
 jobs:
   release:
