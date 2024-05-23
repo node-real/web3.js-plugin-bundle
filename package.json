@@ -1,5 +1,5 @@
 {
-  "name": "@rekyyang/web3-plugin-bundle",
+  "name": "@nodereal/web3-plugin-bundle",
   "version": "0.0.1-beta",
   "description": "bundle plugin to extend web3.js with additional methods",
   "main": "lib/index.js",
