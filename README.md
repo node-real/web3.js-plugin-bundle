@@ -15,7 +15,7 @@ Refer [here](https://docs.nodereal.io/reference/bsc-bundle-service-api) to get d
 
 ## Installation
 ```bash
-npm i web3-plugin-bundle
+pnpm i web3-plugin-bundle
 ```
 
 ## Usage
