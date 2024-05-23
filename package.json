@@ -4,9 +4,9 @@
   "description": "bundle plugin to extend web3.js with additional methods",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/web3/web3.js-plugin-bundle#readme",
+  "homepage": "https://github.com/node-real/web3.js-plugin-bundle#readme",
   "bugs": {
-    "url": "https://github.com/web3/web3.js-plugin-bundle/issues"
+    "url": "https://github.com/node-real/web3.js-plugin-bundle/issues"
   },
   "scripts": {
     "prepare": "husky install",
