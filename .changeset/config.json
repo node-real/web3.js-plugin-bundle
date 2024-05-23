@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "node-real/web3.js-plugin-bundle"
+      "repo": "nodereal/web3.js-plugin-bundle"
     }
   ],
   "commit": false,
