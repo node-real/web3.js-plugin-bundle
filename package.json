@@ -16,7 +16,8 @@
     "prepare": "husky install",
     "version": "pnpm install && changeset version",
     "clean": "rimraf node_modules **/*/node_modules",
-    "build": "pnpm run -F \"./src/**\" -r build"
+    "build": "pnpm run -F \"./src/**\" -r build",
+    "lint": "prettier --write './src/*.{ts,tsx,js,jsx}' && eslint ./src/ --ext .js,.jsx,.ts,.tsx --fix"
   },
   "contributors": [
     "rekyyang <511965710@qq.com>"
