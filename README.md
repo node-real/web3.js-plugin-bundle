@@ -20,6 +20,12 @@ pnpm i @node-real/web3-plugin-bundle
 
 ## Usage
 
+For full example, please refer test/index.test.ts, you should configure three env variables:
+
+APIKEY       your nodereal apikey
+Address      the to address of transactions
+PrivateKey   your wallet privateKey, which used for signing transaction
+
 ### Register plugin
 ```typescript
 import {Web3BundlePlugin} from 'web3-plugin-bundle';
@@ -36,7 +42,7 @@ import { Address, Transaction } from "web3-types";
 import { SendBundleArg, Web3BundlePlugin } from "../src";
 
 // set your endpoint with apikey
-const endpointUrl = "https://bsc-testnet.nodereal.io/v1/{{your apikey}}"
+const endpointUrl = "https://bsc-testnet.nodereal.io/v1/{{your nodereal apikey}}"
 
 // assign your privateKey
 const privateKey = "your private key"
