@@ -22,9 +22,11 @@ pnpm i @node-real/web3-plugin-bundle
 
 For full example, please refer test/index.test.ts, you should configure three env variables:
 
-APIKEY       your nodereal apikey
-Address      the to address of transactions
-PrivateKey   your wallet privateKey, which used for signing transaction
+APIKEY:       your nodereal apikey
+
+Address:      the to address of transactions
+
+PrivateKey:   your wallet privateKey, which used for signing transaction
 
 ### Register plugin
 ```typescript
