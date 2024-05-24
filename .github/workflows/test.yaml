@@ -2,7 +2,7 @@ name: Test Case
 on:
   push:
     branches:
-      - main
+      - master
       - alpha
       - beta
 
