@@ -1,35 +1,46 @@
 {
-  "name": "web3-plugin-template",
-  "version": "1.0.0",
-  "description": "Template plugin to extend web3.js with additional methods",
+  "name": "@node-real/web3-plugin-bundle",
+  "version": "0.0.1-beta",
+  "description": "bundle plugin to extend web3.js with additional methods",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "homepage": "https://github.com/web3/web3.js-plugin-template#readme",
+  "homepage": "https://github.com/node-real/web3.js-plugin-bundle#readme",
   "bugs": {
-    "url": "https://github.com/web3/web3.js-plugin-template/issues"
+    "url": "https://github.com/node-real/web3.js-plugin-bundle/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "scripts": {
-    "lint": "eslint '{src,test}/**/*.ts'",
-    "build": "tsc --project tsconfig.build.json",
-    "test": "jest --config=./test/jest.config.js"
+    "prepare": "husky install",
+    "version": "pnpm install && changeset version",
+    "clean": "rimraf node_modules **/*/node_modules",
+    "build": "pnpm run -F \"./src/**\" -r build",
+    "lint": "prettier --write './src/*.{ts,tsx,js,jsx}' && eslint ./src/ --ext .js,.jsx,.ts,.tsx --fix"
   },
   "contributors": [
-    "ChainSafe <info@chainsafe.io>"
+    "rekyyang <511965710@qq.com>"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:web3/web3.js-plugin-template.git"
+    "url": "git@github.com:node-real/web3.js-plugin-bundle.git"
   },
   "dependencies": {
+    "web3-core": "^4.3.2",
+    "web3-types": "^1.6.0"
   },
   "devDependencies": {
     "@chainsafe/eslint-config": "^2.0.0",
+    "@changesets/cli": "^2.27.3",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.2.6",
     "eslint": "8",
+    "husky": "^9.0.11",
     "jest": "^29.5.0",
     "jest-extended": "^4.0.0",
+    "rimraf": "^5.0.7",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3",
