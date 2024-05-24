@@ -6,6 +6,7 @@ on:
       - alpha
       - beta
       - dev
+      - reky/fix
 
 jobs:
   run-tests:
