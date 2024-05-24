@@ -8,6 +8,10 @@
   "bugs": {
     "url": "https://github.com/node-real/web3.js-plugin-bundle/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "scripts": {
     "prepare": "husky install",
     "version": "pnpm install && changeset version",
