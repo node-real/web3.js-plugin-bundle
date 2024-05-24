@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      ACCOUNT_ADDRESS: ${{ secrets.ACCOUNT_ADDRESS }}
-      ACCOUNT_PRIVATEKEY: ${{ secrets.ACCOUNT_PRIVATEKEY }}
+      Address: ${{ secrets.ACCOUNT_ADDRESS }}
+      PrivateKey: ${{ secrets.ACCOUNT_PRIVATEKEY }}
 
     steps:
       - uses: actions/checkout@v3
