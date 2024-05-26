@@ -16,7 +16,7 @@
     "prepare": "husky install",
     "version": "pnpm install && changeset version",
     "clean": "rimraf node_modules **/*/node_modules",
-    "build": "rollup -c ./src/rollup.config.js",
+    "build": "rollup -c --bundleConfigAsCjs",
     "lint": "prettier --write './src/*.{ts,tsx,js,jsx}' && eslint ./src/ --ext .js,.jsx,.ts,.tsx --fix",
     "test": "jest --runInBand './test/*' --config './test/jest.config.js'"
   },

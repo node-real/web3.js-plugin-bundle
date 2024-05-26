@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2021"
+    ],
+    "baseUrl": "./",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "../dist/types",
+    "outDir": "../../dist",
+    "emitDeclarationOnly": false,
+    "allowUmdGlobalAccess": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@/*": [
+        "../*"
+      ]
+    }
+  },
+  "include": [
+    "../*",
+  ],
+  "exclude": [
+    "../../node_modules",
+  ]
+}
