@@ -12,8 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "declarationDir": "../dist/types",
-    "outDir": "../../dist",
+    "declarationDir": "./dist/types",
+    "outDir": "./dist",
     "emitDeclarationOnly": false,
     "allowUmdGlobalAccess": true,
     "allowJs": true,
@@ -23,14 +23,14 @@
     "strictPropertyInitialization": false,
     "paths": {
       "@/*": [
-        "../*"
+        "./*"
       ]
     }
   },
   "include": [
-    "../*",
+    "./src/*"
   ],
   "exclude": [
-    "../../node_modules",
+    "./node_modules"
   ]
 }

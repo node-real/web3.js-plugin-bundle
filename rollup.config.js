@@ -41,7 +41,7 @@ export default async () => {
           defaultIsModuleExports: false,
         }),
         typescript({
-          tsconfig: './src/config/tsconfig-esm.json',
+          tsconfig: './tsconfig-esm.json',
           declarationDir: './dist/esm',
         }),
         alias({
