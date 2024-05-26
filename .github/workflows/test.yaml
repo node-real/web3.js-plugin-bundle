@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      APIKEY: ${{ secrets.APIKEY }}
       Address: ${{ secrets.ACCOUNT_ADDRESS }}
       PrivateKey: ${{ secrets.ACCOUNT_PRIVATEKEY }}
 
