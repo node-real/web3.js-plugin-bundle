@@ -1,5 +1,11 @@
 # @node-real/web3-plugin-bundle
 
+## 2.1.0
+
+### Minor Changes
+
+- 3fe42f2: fix package main&type
+
 ## 2.0.0
 
 ### Major Changes
