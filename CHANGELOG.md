@@ -1,5 +1,11 @@
 # @node-real/web3-plugin-bundle
 
+## 2.2.0
+
+### Minor Changes
+
+- 479f04a: fix output format
+
 ## 2.1.0
 
 ### Minor Changes
