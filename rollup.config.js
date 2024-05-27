@@ -20,7 +20,7 @@ export default async () => {
       input: './src/index.ts',
       output: {
         dir: './dist/esm',
-        format: 'esm',
+        format: 'commonjs',
         sourcemap: true,
       },
       external: resolveExternal(),
