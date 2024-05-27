@@ -43,5 +43,4 @@ jobs:
           commit: 'chore: [ci] release'
           title: 'chore: [ci] release'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
