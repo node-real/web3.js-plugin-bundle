@@ -5,7 +5,9 @@ on:
       - master
       - alpha
       - beta
-
+permissions:
+  pull-requests: read
+  
 jobs:
   release:
     if: github.repository == 'node-real/web3.js-plugin-bundle'
