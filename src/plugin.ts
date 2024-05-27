@@ -1,5 +1,6 @@
 import { Web3PluginBase } from "web3";
-import { QueryBundle, SendBundleArg } from "./types";
+
+import type { QueryBundle, SendBundleArg } from "./types";
 
 type BundleRpcApi = {
   eth_sendBundle: (parameter1: SendBundleArg) => string;

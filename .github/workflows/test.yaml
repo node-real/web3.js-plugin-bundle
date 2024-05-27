@@ -2,7 +2,7 @@ name: Test Case
 on:
   push:
     branches:
-      - main
+      - master
       - alpha
       - beta
 
@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      APIKEY: ${{ secrets.APIKEY }}
       Address: ${{ secrets.ACCOUNT_ADDRESS }}
       PrivateKey: ${{ secrets.ACCOUNT_PRIVATEKEY }}
 
@@ -21,8 +22,8 @@ jobs:
 
       - uses: ./.github/actions/ci-setup
 
-      - name: Build
-        run: pnpm -F "@node-real/**" build
+#      - name: Build
+#        run: pnpm -F "@node-real/**" build
 
       - name: Run Test
-        run: pnpm -F "@node-real/web3.js-plugin-bundle" test
+        run: pnpm -F "@node-real/*" test

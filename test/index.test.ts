@@ -20,8 +20,6 @@ describe("Web3BundlePlugin Tests", () => {
 
     let web3: Web3;
 
-    console.info(endpointUrl);
-
     beforeAll(() => {
       web3 = new Web3(endpointUrl);
       web3.registerPlugin(new Web3BundlePlugin());
