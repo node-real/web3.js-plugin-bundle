@@ -42,13 +42,34 @@ describe("Web3BundlePlugin Tests", () => {
 
       const txs: string[] = [];
 
+      // bundle price
+      /*
+		  Unlike sorting in the tx pool based on tx gas prices, the acceptance of a bundle is determined by its overall gas price,
+		  not the gas price of a single transaction. If the overall bundle price is too low, it will be rejected by the network.
+		  The rules for calculating the bundle price are as follows:
+		  bundlePrice = sum(gasFee of each transaction) / sum(gas used of each transaction)
+		  Developers should ensure that the bundlePrice always exceeds the value returned by the eth_bundlePrice API endpoint.
+	  */
+      let bundlePrice = await web3.bundle
+      .bundlePrice()
+      .catch((reason: any) => {
+        console.error(reason);
+        fail();
+      });
+      console.info("bundlePrice", bundlePrice);
+
+      if (bundlePrice == null) {
+        // set default
+        bundlePrice = BigInt(5e9)
+      }
+
       for (let i = 0; i < 3; i++) {
         const tx: Transaction = {
           from: address,
           to: address,
           value: web3.utils.toWei(0.0001, "ether"),
           gas: 0x17530,
-          gasPrice: 0x12a05f200,
+          gasPrice: bundlePrice,
           nonce: nonce + BigInt(i),
         };
         const signedTx = await web3.eth.accounts
