@@ -35,7 +35,13 @@ web3 = new Web3(/* provider here */);
 web3.registerPlugin(new Web3BundlePlugin());
 ```
 
-### Methods
+### Example
+
+Developer can run example by these steps:
+1. set env APIKEY ([your meganode apikey](https://nodereal.io/api-marketplace/bsc-bundle-service-api))
+2. set env PrivateKey (sign transactions)
+3. set env Address (to address of transactions)
+4. `pnpm run test`
 
 ```typescript
 import * as process from "process";
@@ -58,13 +64,34 @@ const address: Address = process.env.Address as Address;
 const nonce = await web3.eth.getTransactionCount(address, "latest");
 const txs: string[] = [];
 
+// bundle price
+/*
+    Unlike sorting in the tx pool based on tx gas prices, the acceptance of a bundle is determined by its overall gas price,
+    not the gas price of a single transaction. If the overall bundle price is too low, it will be rejected by the network.
+    The rules for calculating the bundle price are as follows:
+    bundlePrice = sum(gasFee of each transaction) / sum(gas used of each transaction)
+    Developers should ensure that the bundlePrice always exceeds the value returned by the eth_bundlePrice API endpoint.
+*/
+let bundlePrice = await web3.bundle
+.bundlePrice()
+.catch((reason: any) => {
+    console.error(reason);
+    fail();
+});
+console.info("bundlePrice", bundlePrice);
+
+if (bundlePrice == null) {
+    // set default
+    bundlePrice = BigInt(5e9)
+}
+
 for (let i = 0; i < 3; i++) {
 	const tx: Transaction = {
 		from: address,
 		to: address,
 		value: web3.utils.toWei(0.0001, "ether"),
 		gas: 0x17530,
-		gasPrice: 0x12a05f200,
+		gasPrice: bundlePrice,
 		nonce: nonce + BigInt(i),
 	};
 	// sign your tx
@@ -91,13 +118,6 @@ const bundleHash = await web3.bundle
 // query bundle by bundleHash
 const bundleObj = await web3.bundle
 .queryBundle(bundleHash)
-.catch((reason: any) => {
-	console.error(reason);
-});
-
-// query bundlePrice
-const bundlePrice = await web3.bundle
-.bundlePrice()
 .catch((reason: any) => {
 	console.error(reason);
 });
