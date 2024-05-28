@@ -1,5 +1,11 @@
 # @node-real/web3-plugin-bundle
 
+## 2.3.0
+
+### Minor Changes
+
+- 337c93b: fix readme & example
+
 ## 2.2.0
 
 ### Minor Changes
